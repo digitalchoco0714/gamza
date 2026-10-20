@@ -1,0 +1,16 @@
+# 민감한 환경 변수 및 토큰 파일 제외
+.env
+.env.*
+!.env.example
+
+# 의존성 및 빌드 산출물
+node_modules/
+dist/
+build/
+
+# 에디터 및 OS 임시 파일
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

@@ -1,0 +1,166 @@
+:root {
+  /* 감자(Potato) 테마 컬러 팔레트 - 브라운 베이스 & 브라이트 옐로우 포인트 */
+  --bg-main: #FAF6F0;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F2ECE1;
+  --primary: #7C4D25;
+  --primary-hover: #5E3818;
+  --primary-light: #EFE5D8;
+  --secondary: #C89B6E;
+
+  /* 시선을 끄는 밝은 노란색 포인트 컬러 */
+  --accent: #FFD43B;
+  --accent-hover: #FCC419;
+  --accent-light: #FFF9DB;
+  --accent-border: #FFE066;
+
+  --text-main: #2C221E;
+  --text-sub: #6E5D53;
+  --text-muted: #9E8F85;
+  --border-color: #E5DEC9;
+
+  /* 판매 상태 색상 */
+  --status-sale-bg: #E8F5E9;
+  --status-sale-text: #2E7D32;
+  --status-reserve-bg: #FFF3E0;
+  --status-reserve-text: #EF6C00;
+  --status-done-bg: #ECEFF1;
+  --status-done-text: #607D8B;
+
+  /* 사이즈 & 반경 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 2px 8px rgba(74, 53, 37, 0.06);
+  --shadow-md: 0 8px 24px rgba(74, 53, 37, 0.12);
+  --shadow-lg: 0 16px 40px rgba(44, 34, 30, 0.2);
+  --shadow-accent: 0 4px 12px rgba(252, 196, 25, 0.32);
+  --max-width: 1024px;
+  --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Malgun Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease;
+}
+
+/* 공통 버튼 규격 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--text-main);
+  font-weight: 700;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-light);
+  border-color: var(--accent-border);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent-light);
+  border-color: var(--accent-hover);
+  color: var(--text-main);
+}
+
+/* 판매 상태 배지 규격 */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.status-sale {
+  background-color: var(--status-sale-bg);
+  color: var(--status-sale-text);
+}
+
+.status-reserve {
+  background-color: var(--status-reserve-bg);
+  color: var(--status-reserve-text);
+}
+
+.status-done {
+  background-color: var(--status-done-bg);
+  color: var(--status-done-text);
+}
+
+/* 공통 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(44, 34, 30, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none !important;
+}

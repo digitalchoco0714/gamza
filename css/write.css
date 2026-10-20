@@ -1,0 +1,372 @@
+/* [화면 3] 글쓰기(상품 등록) 모달 스타일 */
+.write-modal-dialog {
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.22s ease;
+}
+
+.modal-overlay.active .write-modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+/* 모달 헤더 */
+.write-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background-color: var(--bg-main);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.write-modal-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.write-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-sub);
+  background-color: var(--bg-subtle);
+}
+
+.write-close-btn:hover {
+  background-color: var(--accent-light);
+  color: var(--text-main);
+}
+
+/* 모달 본문 & 폼 레이아웃 */
+.write-form {
+  padding: 22px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.write-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.write-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.write-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.write-label {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.write-char-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.write-char-count.is-limit {
+  color: #D84315;
+  font-weight: 700;
+}
+
+.write-required {
+  color: #D84315;
+  font-weight: 800;
+}
+
+/* 공통 인풋 / 셀렉트 / 텍스트에어리어 */
+.write-input,
+.write-select,
+.write-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  color: var(--text-main);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.write-input::placeholder,
+.write-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.write-input:focus,
+.write-select:focus,
+.write-textarea:focus {
+  outline: none;
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.write-textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+/* 가격 입력 래퍼 */
+.write-price-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.write-price-wrap .write-input {
+  padding-right: 36px;
+}
+
+.write-price-unit {
+  position: absolute;
+  right: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  pointer-events: none;
+}
+
+/* 1. 상품 이미지 업로드 & 미리보기 */
+.write-image-box {
+  display: flex;
+  gap: 14px;
+  align-items: stretch;
+}
+
+.write-image-preview {
+  width: 116px;
+  height: 116px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  border: 1.5px dashed var(--secondary);
+  background-color: var(--bg-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.write-image-preview:hover {
+  border-color: var(--accent-hover);
+  background-color: var(--accent-light);
+}
+
+.write-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.write-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-sub);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+}
+
+.write-image-placeholder span:first-child {
+  font-size: 1.4rem;
+}
+
+.write-image-controls {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.write-image-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.write-btn-sm {
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  border-radius: var(--radius-sm);
+}
+
+/* 7. 판매 상태 라디오 칩 */
+.write-status-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.write-status-option {
+  position: relative;
+}
+
+.write-status-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.write-status-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-color);
+  background-color: var(--bg-subtle);
+  color: var(--text-sub);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.write-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* 상태별 선택 시 직관적인 컬러 강조 */
+.write-status-option input[value="판매중"]:checked + .write-status-chip {
+  background-color: var(--status-sale-bg);
+  color: var(--status-sale-text);
+  border-color: var(--status-sale-text);
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+}
+
+.write-status-option input[value="예약중"]:checked + .write-status-chip {
+  background-color: var(--status-reserve-bg);
+  color: var(--status-reserve-text);
+  border-color: var(--status-reserve-text);
+  box-shadow: 0 2px 8px rgba(239, 108, 0, 0.15);
+}
+
+.write-status-option input[value="거래완료"]:checked + .write-status-chip {
+  background-color: var(--status-done-bg);
+  color: var(--status-done-text);
+  border-color: var(--status-done-text);
+  box-shadow: 0 2px 8px rgba(96, 125, 139, 0.15);
+}
+
+/* 에러 안내 배너 */
+.write-error-msg {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+/* 하단 푸터 & 작성완료 버튼 */
+.write-modal-footer {
+  padding: 16px 24px;
+  background-color: var(--bg-main);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.write-submit-btn {
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .write-modal-dialog {
+    max-width: 100%;
+    max-height: 94vh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .write-modal-header {
+    padding: 16px 18px;
+  }
+
+  .write-form {
+    padding: 18px;
+    gap: 15px;
+  }
+
+  .write-field-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .write-image-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .write-image-preview {
+    width: 100%;
+    height: 160px;
+  }
+
+  .write-image-controls {
+    width: 100%;
+  }
+
+  .write-status-chip {
+    padding: 9px 8px;
+    font-size: 0.82rem;
+  }
+
+  .write-modal-footer {
+    padding: 14px 18px;
+  }
+}
